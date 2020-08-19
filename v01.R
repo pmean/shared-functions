@@ -68,12 +68,30 @@ if (verbose) {
 }
 
 
+bpad <- function(x) {
+  one_digit <- (x < 10)
+  x <- as.character(x)
+  x[one_digit] <- paste0(" ", x[one_digit])
+  return(x)
+}
+
 bbpad <- function(x) {
   one_digit <- (x < 10)
   two_digits <- (x >=10) & (x < 100)
   x <- as.character(x)
   x[one_digit] <- paste0("  ", x[one_digit])
   x[two_digits] <- paste0(" ", x[two_digits])
+  return(x)
+}
+
+bbbpad <- function(x) {
+  one_digit <- (x < 10)
+  two_digits <- (x >=10) & (x < 100)
+  three_digits <- (x >=100) & (x < 1000)
+  x <- as.character(x)
+  x[one_digit] <- paste0("   ", x[one_digit])
+  x[two_digits] <- paste0("  ", x[two_digits])
+  x[three_digits] <- paste0(" ", x[two_digits])
   return(x)
 }
 
